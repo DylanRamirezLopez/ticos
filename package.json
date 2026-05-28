@@ -1,0 +1,17 @@
+{
+  "name": "ticos",
+  "version": "1.0.0",
+  "description": "TICOS - Instagram Clone (MERN Stack)",
+  "private": true,
+  "scripts": {
+    "install:all": "cd server && npm install && cd ../client && npm install",
+    "dev": "concurrently -n server,client -c cyan,magenta \"cd server && npm run dev\" \"cd client && npm start\"",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "start": "concurrently -n server,client -c cyan,magenta \"cd server && npm start\" \"cd client && npm start\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

@@ -1,0 +1,38 @@
+# ─── Environment ─────────────────────────────────
+.env
+.env.*
+!.env.example
+!.env.production
+
+# ─── Dependencies ──────────────────────────────
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# ─── Build output ──────────────────────────────
+client/build/
+dist/
+
+# ─── Uploads (local files) ─────────────────────
+server/uploads/*
+!server/uploads/.gitkeep
+
+# ─── OS files ────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ─── IDE / Editor ────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ─── Logs ─────────────────────────────────────
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ─── Coverage / Tests ─────────────────────────
+coverage/
