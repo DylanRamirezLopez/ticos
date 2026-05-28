@@ -34,6 +34,9 @@ const storyRoutes = require('./routes/stories');
 const commentRoutes = require('./routes/comments');
 const echoRoutes = require('./routes/echo');
 const uploadRoutes = require('./routes/upload');
+const adminRoutes = require('./routes/admin');
+const telemetryMiddleware = require('./middleware/telemetry');
+const { seedAdmin } = require('./controllers/admin');
 
 const app = express();
 const server = http.createServer(app);
@@ -116,6 +119,12 @@ connectDB();
 app.use(express.json({ limit: '10kb' }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// ─── Telemetría (captura cada request) ───
+app.use('/api/', telemetryMiddleware());
+
+// ─── Seed admin user ───
+seedAdmin();
+
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/users', userRoutes);
@@ -124,6 +133,7 @@ app.use('/api/stories', storyRoutes);
 app.use('/api/comments', commentRoutes);
 app.use('/api/echo', echoRoutes);
 app.use('/api/upload', uploadRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'TICOS API is running', environment: process.env.NODE_ENV || 'development' });
