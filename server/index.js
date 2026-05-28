@@ -45,6 +45,7 @@ app.set('trust proxy', 1);
 const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:5000',
+  'https://ticos-beryl.vercel.app',
   process.env.FRONTEND_URL,
   process.env.BACKEND_URL,
 ].filter(Boolean);
